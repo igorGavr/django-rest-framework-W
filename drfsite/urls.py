@@ -18,8 +18,9 @@ from django.urls import path, include
 from women.views import *
 from rest_framework import routers
 
-router = routers.SimpleRouter()
-router.register(r'women', WomenViewSet)
+# basename='women' - це повинно бути обовязково коли в Вюсеті немає Кверісету
+router = routers.DefaultRouter()
+router.register(r'women', WomenViewSet, basename='women')
 
 
 urlpatterns = [
