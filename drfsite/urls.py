@@ -18,14 +18,12 @@ from django.urls import path, include
 from women.views import *
 from rest_framework import routers
 
-# basename='women' - це повинно бути обовязково коли в Вюсеті немає Кверісету
-router = routers.DefaultRouter()
-router.register(r'women', WomenViewSet, basename='women')
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls)),
-    # path('api/v1/womenlist/', WomenApiList.as_view()),
-    # path('api/v1/womenlist/<int:pk>/', WomenAPIDetailView.as_view()),
+    path('api/v1/women/', WomenAPIList.as_view()),
+    path('api/v1/women/<int:pk>/', WomenAPIUpdate.as_view()),
+    path('api/v1/womendelete/<int:pk>/', WomenAPIDestroy.as_view()),
 ]
